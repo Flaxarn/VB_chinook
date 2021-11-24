@@ -72,4 +72,28 @@
         grdAlbumLatar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.AllCells
 
     End Sub
+
+    Private Sub btnNyArtist_Click(sender As Object, e As EventArgs) Handles btnNyArtist.Click
+
+        If frmNyArtist.ShowDialog = DialogResult.OK Then
+
+            reloadTree()
+        End If
+    End Sub
+
+    Private Sub btnNyttAlbum_Click(sender As Object, e As EventArgs) Handles btnNyttAlbum.Click
+
+        If IsNothing(tvwArtisterAlbum.SelectedNode.Parent) Then
+
+            ' Vi har en artist markerad, id finns i slutet på nodens tag
+            Dim artistID As String
+            artistID = Strings.Mid(tvwArtisterAlbum.SelectedNode.Tag, Strings.InStr(tvwArtisterAlbum.SelectedNode.Tag, "=") + 1)
+
+            frmNyttAlbum.txtArtistID.Text = artistID
+        End If
+
+        If frmNyttAlbum.ShowDialog() = DialogResult.OK Then
+            reloadTree()
+        End If
+    End Sub
 End Class

@@ -24,7 +24,11 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.tvwArtisterAlbum = New System.Windows.Forms.TreeView()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnNyLat = New System.Windows.Forms.Button()
+        Me.btnNyttAlbum = New System.Windows.Forms.Button()
+        Me.btnNyArtist = New System.Windows.Forms.Button()
         Me.grdAlbumLatar = New System.Windows.Forms.DataGridView()
+        Me.Panel1.SuspendLayout()
         CType(Me.grdAlbumLatar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -38,11 +42,41 @@ Partial Class Form1
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.btnNyLat)
+        Me.Panel1.Controls.Add(Me.btnNyttAlbum)
+        Me.Panel1.Controls.Add(Me.btnNyArtist)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(267, 478)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(649, 82)
         Me.Panel1.TabIndex = 1
+        '
+        'btnNyLat
+        '
+        Me.btnNyLat.Location = New System.Drawing.Point(299, 23)
+        Me.btnNyLat.Name = "btnNyLat"
+        Me.btnNyLat.Size = New System.Drawing.Size(112, 34)
+        Me.btnNyLat.TabIndex = 2
+        Me.btnNyLat.Text = "Ny Låt"
+        Me.btnNyLat.UseVisualStyleBackColor = True
+        '
+        'btnNyttAlbum
+        '
+        Me.btnNyttAlbum.Location = New System.Drawing.Point(164, 23)
+        Me.btnNyttAlbum.Name = "btnNyttAlbum"
+        Me.btnNyttAlbum.Size = New System.Drawing.Size(112, 34)
+        Me.btnNyttAlbum.TabIndex = 1
+        Me.btnNyttAlbum.Text = "Nytt Album"
+        Me.btnNyttAlbum.UseVisualStyleBackColor = True
+        '
+        'btnNyArtist
+        '
+        Me.btnNyArtist.Location = New System.Drawing.Point(30, 23)
+        Me.btnNyArtist.Name = "btnNyArtist"
+        Me.btnNyArtist.Size = New System.Drawing.Size(112, 34)
+        Me.btnNyArtist.TabIndex = 0
+        Me.btnNyArtist.Text = "Ny Artist"
+        Me.btnNyArtist.UseVisualStyleBackColor = True
         '
         'grdAlbumLatar
         '
@@ -65,6 +99,7 @@ Partial Class Form1
         Me.Controls.Add(Me.tvwArtisterAlbum)
         Me.Name = "Form1"
         Me.Text = "Form1"
+        Me.Panel1.ResumeLayout(False)
         CType(Me.grdAlbumLatar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -73,4 +108,7 @@ Partial Class Form1
     Friend WithEvents tvwArtisterAlbum As TreeView
     Friend WithEvents Panel1 As Panel
     Friend WithEvents grdAlbumLatar As DataGridView
+    Friend WithEvents btnNyLat As Button
+    Friend WithEvents btnNyttAlbum As Button
+    Friend WithEvents btnNyArtist As Button
 End Class
