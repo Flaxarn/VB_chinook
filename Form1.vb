@@ -1,6 +1,6 @@
 ﻿Public Class Form1
 
-    Private artistNode As Integer
+    Public artistNode As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Fyll trädvyn vid formulärinläsning
@@ -12,11 +12,9 @@
         ' Rensa tidigare innehåll
         tvwArtisterAlbum.Nodes.Clear()
 
-        Dim dt As DataTable = hamtaData("SELECT * FROM artists")
+        Dim dt As DataTable = hamtaData("SELECT * FROM artists ORDER BY name")
         fyllTrad(dt, 0, Nothing, "Name", "Artistid")
 
-        ' Sortera trädet
-        tvwArtisterAlbum.Sort()
     End Sub
 
     Private Sub fyllTrad(tabell As DataTable, parentID As Integer, nod As TreeNode, title As String, tag As String)
@@ -36,13 +34,12 @@
                 ' Vi har en rotnod (=artist), lägg till den nya noden i trädvyn
                 tvwArtisterAlbum.Nodes.Add(child)
 
-                Dim dtChild As DataTable = hamtaData("SELECT * FROM albums WHERE " & child.Tag)
+                Dim dtChild As DataTable = hamtaData("SELECT * FROM albums WHERE " & child.Tag & " ORDER BY title")
                 fyllTrad(dtChild, row(tag), child, "Title", "AlbumId")
 
                 If artistNode = row("ArtistId") Then
                     tvwArtisterAlbum.SelectedNode = child
                     child.Expand()
-                    child.EnsureVisible()
                     child.Checked = True
                 End If
             Else
@@ -51,6 +48,9 @@
                 nod.Nodes.Add(child)
             End If
         Next
+        If Not IsNothing(tvwArtisterAlbum.SelectedNode) Then
+            tvwArtisterAlbum.SelectedNode.EnsureVisible()
+        End If
     End Sub
 
     Private Sub tvwArtisterAlbum_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles tvwArtisterAlbum.AfterSelect

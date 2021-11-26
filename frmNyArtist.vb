@@ -22,6 +22,10 @@
         ' Skriv till databasen
         dataAdapter.Update(ds, "Artister")
 
+        ' Hämta senaste uppdaterade raden
+        Dim dt As DataTable = hamtaData("SELECT last_insert_rowid()")
+        Form1.artistNode = dt.Rows(0)(0)
+
         ' Meddela att allt gick bra till anropande formulär och stäng aktuellt formulär
         DialogResult = DialogResult.OK
         Me.Close()
