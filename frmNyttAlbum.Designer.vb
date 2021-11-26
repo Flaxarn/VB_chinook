@@ -51,6 +51,7 @@ Partial Class frmNyttAlbum
         Me.txtArtistID.Name = "txtArtistID"
         Me.txtArtistID.Size = New System.Drawing.Size(150, 31)
         Me.txtArtistID.TabIndex = 2
+        Me.txtArtistID.Visible = False
         '
         'btnSpara
         '
